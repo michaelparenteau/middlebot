@@ -4,7 +4,7 @@ middlebot is a project that I created to generate a new [middleman](http://middl
 
 ## Included in the Repo
 
-**The Middleman Template**
+### The Middleman Template
 * use .haml files intsead of .erb
 * use bundler
 * use rack
@@ -14,7 +14,7 @@ middlebot is a project that I created to generate a new [middleman](http://middl
 * use screen.scss instead of site.scss
 * add compass/css3 & compass/reset to screen.scss
 
-**mirb -- _WTF?_**
+### mirb -- _WTF?_
 
 mirb is a bash script. mirb is the brains of middlebot. Running mirb in will:
 
