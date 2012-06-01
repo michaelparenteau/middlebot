@@ -1,0 +1,71 @@
+#!/bin/sh
+
+function create_new_middleman_app {
+  # creates app with using project template (previously generated with rack & bundler flags)
+  middleman init $PROJECT_NAME --template=mirb-haml &&
+  # change into the directory
+  cd $PROJECT_NAME &&
+  # create .rvmrc file
+  echo "rvm use 1.9.3-p125" > .rvmrc &&
+  # set up rvm, install bundler and bundle install
+  rvm use 1.9.3-p125 &&
+  gem install bundler --pre && 
+  bundle &&
+  # install git with .gitignore file & README.md, add and commit
+  git init &&
+  echo ".sass-cache
+.DS_Store" > .gitignore &&
+  echo "## $PROJECT_NAME
+  
+  TODO: make this README meaningful and helpful" > README.md &&
+  git add . &&
+  git commit -m "first commit: set up middleman project"
+}
+
+function display_usage {
+  local project_name=$1
+
+  if [ -z $project_name ] ; then
+    echo "Usage: $0 <new project name>"
+    exit 1
+  fi
+}
+
+function check_that_directory_does_not_already_exist {
+  local project_name=$1
+
+  if [ -d $project_name ]; then
+    echo "A directory named $project_name already exists.  Use a different name."
+    exit 1
+  fi
+}
+
+function create_github_repo {
+  read -p "enter your github username: " github_username
+  read -s -p "enter your github password: " github_password
+  curl -d "{\"name\":\"$PROJECT_NAME\"}" -u "$github_username:$github_password" https://api.github.com/user/repos
+  git remote add origin git@github.com:$github_username/$PROJECT_NAME.git &&
+  git push -u origin master
+}
+
+function setup_heroku {
+  heroku auth:login &&
+  heroku apps:create $PROJECT_NAME -s cedar &&
+  git push heroku master
+}
+
+PROJECT_NAME=$1 # First argument passed
+
+display_usage $PROJECT_NAME
+check_that_directory_does_not_already_exist $PROJECT_NAME
+
+create_new_middleman_app
+echo "New project created at `pwd`"
+read -p "Do you want to create a public github repo? (yes/no): " github_answer
+if [ "$github_answer" == "yes" ]; then
+  create_github_repo
+fi
+read -p "Do you want to create a heroku repo for this app? (yes/no): " heroku_answer
+if [ "$heroku_answer" == "yes" ]; then
+  setup_heroku
+fi
