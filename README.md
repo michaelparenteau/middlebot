@@ -16,7 +16,7 @@ middlebot is a project that I created to generate a new [middleman](http://middl
 
 ### mirb -- _WTF?_
 
-mirb is a bash script. mirb is the brains of middlebot. Running mirb in will:
+mirb is a bash script. mirb is the brains of middlebot. Running mirb will:
 
 * create a middleman install form the above template
 * create a .gitignore file
