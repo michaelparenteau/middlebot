@@ -2,7 +2,7 @@
 
 function create_new_middleman_app {
   # creates app with using project template (previously generated with rack & bundler flags)
-  middleman init $PROJECT_NAME --template=mirb-haml &&
+  middleman init $PROJECT_NAME --template=mbot-haml &&
   # change into the directory
   cd $PROJECT_NAME &&
   # create .rvmrc file

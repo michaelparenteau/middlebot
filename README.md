@@ -14,9 +14,9 @@ middlebot is a project that I created to generate a new [middleman](http://middl
 * use screen.scss instead of site.scss
 * add compass/css3 & compass/reset to screen.scss
 
-### mirb -- _WTF?_
+### mbot
 
-mirb is a bash script. mirb is the brains of middlebot. Running mirb will:
+mbot is a bash script. mbot is the brains of middlebot. Running mbot will:
 
 * create a middleman install form the above template
 * create a .gitignore file
@@ -48,22 +48,22 @@ If you cloned this repo, you may:
 
     cp -r middlebot/.middleman ~/.middleman
 
-You will then need to have mirb on your path and executable. I use a bin directory. If you cloned the repo you may:
+You will then need to have mbot on your path and executable. I use a bin directory. If you cloned the repo you may:
 
     mkdir ~/bin && echo "export PATH=$PATH:$HOME/bin" >> ~/.bash_profile && source ~/.bash_profile
-    cp middlebot/mirb ~/bin/mirb && chmod +x ~/bin/mirb
+    cp middlebot/mbot ~/bin/mbot && chmod +x ~/bin/mbot
 
-The first command makes the bin folder and adds it to your path. The second command copies the mirb script to you bin folder and makes it executable.
+The first command makes the bin folder and adds it to your path. The second command copies the mbot script to you bin folder and makes it executable.
 
 After you have the template in place and the bash script ready to run,
 you may cd into your project folder and run:
 
-     mirb [project name]
+     mbot [project name]
 
 Enjoy!
 
 ## Important Notes
 
-* You will need a github account & heroku account to create those repos with mirb
-* There is no failsafe around trying to create repos on github or heroku with names that already exist. You would need to pick up manually from where mirb left off when it failed.
+* You will need a github account & heroku account to create those repos with mbot
+* There is no failsafe around trying to create repos on github or heroku with names that already exist. You would need to pick up manually from where mbot left off when it failed.
 

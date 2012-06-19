@@ -7,27 +7,12 @@
 # require 'susy'
 
 # Change Compass configuration
-# compass_config do |config|
-#   config.output_style = :compact
-# end
+compass_config do |config|
+  config.output_style = :compact
+end
 
 ###
-# Haml
-###
-
-# CodeRay syntax highlighting in Haml
-# First: gem install haml-coderay
-# require 'haml-coderay'
-
-# CoffeeScript filters in Haml
-# First: gem install coffee-filter
-# require 'coffee-filter'
-
-# Automatic image dimensions on image_tag helper
-# activate :automatic_image_sizes
-
-###
-# Page command
+# Page options, layouts, aliases and proxies
 ###
 
 # Per-page layout changes:
@@ -52,6 +37,9 @@
 # Helpers
 ###
 
+# Automatic image dimensions on image_tag helper
+# activate :automatic_image_sizes
+
 # Methods defined in the helpers block are available in templates
 # helpers do
 #   def some_helper
@@ -59,14 +47,11 @@
 #   end
 # end
 
-# Change the CSS directory
-# set :css_dir, "alternative_css_directory"
+set :css_dir, 'stylesheets'
 
-# Change the JS directory
-# set :js_dir, "alternative_js_directory"
+set :js_dir, 'javascripts'
 
-# Change the images directory
-# set :images_dir, "alternative_image_directory"
+set :images_dir, 'images'
 
 # Build-specific configuration
 configure :build do
